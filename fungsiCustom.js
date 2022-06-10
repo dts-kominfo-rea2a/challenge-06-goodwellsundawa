@@ -20,17 +20,17 @@ let modifyFile3 = (val) => {
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
 const bacaData = (fnCallback) => {
-  fs.readFile("./data5.json", "utf8", (err, data1) => {
+  fs.readFile(file1, "utf8", (err, data1) => {
     if (err) {
-      return console.log("Error saat read file data1 : " + err);
+      return fnCallback("Error saat read file data1 : " + err, null);
     }
-    fs.readFile("./data2.json", "utf8", (err, data2) => {
+    fs.readFile(file2, "utf8", (err, data2) => {
       if (err) {
-        return console.log("Error saat read file data2 : " + err);
+        return fnCallback("Error saat read file data2 : " + err, null);
       }
-      fs.readFile("./data3.json", "utf8", (err, data3) => {
+      fs.readFile(file3, "utf8", (err, data3) => {
         if (err) {
-          return console.log("Error saat read file data3 : " + err);
+          return fnCallback("Error saat read file data3 : " + err, null);
         }
         const arrData = [];
         const jsonData1 = JSON.parse(data1);
@@ -40,7 +40,7 @@ const bacaData = (fnCallback) => {
         arrData.push(getSecondWord(jsonData2[0].message));
         arrData.push(getSecondWord(jsonData3[0].data.message));
 
-        fnCallback(err, arrData);
+        fnCallback(null, arrData);
       });
     });
   });
@@ -48,7 +48,6 @@ const bacaData = (fnCallback) => {
 
 const getSecondWord = (sentence) => {
   const arrSentence = sentence.split(" ");
-  // return arrSentence[arrSentence.length - 1];
   return arrSentence[1];
 };
 
