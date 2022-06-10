@@ -22,15 +22,18 @@ let modifyFile3 = (val) => {
 const bacaData = (fnCallback) => {
   fs.readFile(file1, "utf8", (err, data1) => {
     if (err) {
-      return fnCallback("Error saat read file data1 : " + err, null);
+      fnCallback("Error saat read file data1 : " + err, null);
+      return;
     }
     fs.readFile(file2, "utf8", (err, data2) => {
       if (err) {
-        return fnCallback("Error saat read file data2 : " + err, null);
+        fnCallback("Error saat read file data2 : " + err, null);
+        return;
       }
       fs.readFile(file3, "utf8", (err, data3) => {
         if (err) {
-          return fnCallback("Error saat read file data3 : " + err, null);
+          fnCallback("Error saat read file data3 : " + err, null);
+          return;
         }
         const arrData = [];
         const jsonData1 = JSON.parse(data1);
