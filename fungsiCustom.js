@@ -48,7 +48,7 @@ const bacaData = (fnCallback) => {
 
 const getSecondWord = (sentence) => {
   const arrSentence = sentence.split(" ");
-  return arrSentence[1];
+  return arrSentence[arrSentence.length - 1];
 };
 
 // ! JANGAN DIMODIFIKASI
